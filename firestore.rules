@@ -1,0 +1,30 @@
+rules_version = '2';
+// TrickySSC Exams (separate Firebase project) — paste into Firestore → Rules → Publish.
+// Visitors can only ADD a waitlist entry. Nobody can read, change or delete entries
+// from the website; you see them in the Firebase console (Firestore → waitlist).
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    match /waitlist/{entryId} {
+      allow create: if
+        request.resource.data.keys().hasOnly(['name','phone','email','exam','inService','source','createdAt'])
+        && request.resource.data.keys().hasAll(['name','phone','exam','createdAt'])
+        && request.resource.data.name is string
+        && request.resource.data.name.size() >= 2 && request.resource.data.name.size() < 80
+        && request.resource.data.phone is string
+        && request.resource.data.phone.matches('^[6-9][0-9]{9}$')
+        && request.resource.data.exam in ['drdo-sao','alc','esic-dd','epfo']
+        && entryId == request.resource.data.exam + '_' + request.resource.data.phone
+        && (!('email' in request.resource.data) || (request.resource.data.email is string && request.resource.data.email.size() < 120))
+        && (!('inService' in request.resource.data) || request.resource.data.inService in ['yes','no',''])
+        && (!('source' in request.resource.data) || (request.resource.data.source is string && request.resource.data.source.size() <= 60))
+        && request.resource.data.createdAt == request.time;
+      allow read, update, delete: if false;
+    }
+
+    // Everything else is closed until the course (accounts, tests) is built.
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

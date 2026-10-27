@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://exams.trickyssc.com/sitemap.xml
