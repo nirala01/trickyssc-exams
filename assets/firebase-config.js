@@ -8,15 +8,14 @@
 // 5. Firestore → Rules → paste the contents of firestore.rules → Publish
 // 6. Authentication → Settings → Authorized domains → add exams.trickyssc.com
 //
-// Until step 3 is done the waitlist form shows a "join our Telegram"
-// message instead of saving, so the site is safe to go live first.
+// Config filled in 2026-10-27 (project: trickyssc-exams).
 export const firebaseConfig = {
-  apiKey: "PASTE_API_KEY",
-  authDomain: "PASTE_PROJECT_ID.firebaseapp.com",
-  projectId: "PASTE_PROJECT_ID",
-  storageBucket: "PASTE_PROJECT_ID.firebasestorage.app",
-  messagingSenderId: "PASTE_SENDER_ID",
-  appId: "PASTE_APP_ID"
+  apiKey: "AIzaSyALVgIzjw6etYwUBCDN_MAwXa1Bm19FDpM",
+  authDomain: "trickyssc-exams.firebaseapp.com",
+  projectId: "trickyssc-exams",
+  storageBucket: "trickyssc-exams.firebasestorage.app",
+  messagingSenderId: "330446854672",
+  appId: "1:330446854672:web:53f225b58e275c4328c895"
 };
 
 export const isConfigured = !String(firebaseConfig.apiKey).startsWith("PASTE_");
