@@ -1,30 +1,16 @@
-// TrickySSC Exams — waitlist / pre-registration form (EXAMS-WAITLIST-V1)
+// TrickySSC Exams — waitlist / pre-registration form (EXAMS-WAITLIST-V2)
 // Any <form data-waitlist> on the page is wired up. Fields used:
 //   name, phone, email (optional), exam (hidden input or <select>), inService (optional select)
 // Each entry is saved to Firestore "waitlist/<exam>_<phone>" — one entry per phone per exam.
-import { firebaseConfig, isConfigured } from "./firebase-config.js";
+import { getDbKit, isConfigured } from "./fb.js";
 
-const SDK = "https://www.gstatic.com/firebasejs/10.12.2/";
 const TELEGRAM = "https://t.me/trickyssc";
 const EXAM_NAMES = {
   "drdo-sao": "DRDO SAO Grade-II",
   "alc": "Assistant Labour Commissioner",
   "esic-dd": "ESIC Deputy Director",
-  "epfo": "EPFO EO/AO & APFC"
+  "epfo": "EPFO APFC & EO/AO"
 };
-
-let dbPromise = null;
-function getDb() {
-  if (!dbPromise) {
-    dbPromise = (async () => {
-      const { initializeApp } = await import(SDK + "firebase-app.js");
-      const fs = await import(SDK + "firebase-firestore.js");
-      const app = initializeApp(firebaseConfig);
-      return { db: fs.getFirestore(app), fs };
-    })();
-  }
-  return dbPromise;
-}
 
 function show(box, kind, html) {
   box.className = "form-msg " + kind;
@@ -51,7 +37,8 @@ function wire(form) {
 
   const initialExam = examField ? examField.value : "";
   if (initialExam && hasJoined(initialExam)) {
-    show(box, "ok", "✅ You're already on the " + (EXAM_NAMES[initialExam] || "") + " list. We'll message you when the course opens.");
+    show(box, "ok", "✅ You're already on the " + (EXAM_NAMES[initialExam] || "") + " list." +
+      (initialExam === "drdo-sao" ? " We'll message you when the course opens." : " We'll message you with exam updates."));
   }
 
   form.addEventListener("submit", async (ev) => {
@@ -75,7 +62,7 @@ function wire(form) {
     const label = btn.textContent;
     btn.textContent = "Saving…";
     try {
-      const { db, fs } = await getDb();
+      const { db, fs } = await getDbKit();
       await fs.setDoc(fs.doc(db, "waitlist", exam + "_" + phone), {
         name: name.slice(0, 79),
         phone,
@@ -90,7 +77,7 @@ function wire(form) {
       form.reset();
       if (examField && examField.type === "hidden") examField.value = exam;
       show(box, "ok", "✅ Done, " + name.split(" ")[0] + "! You're on the " + EXAM_NAMES[exam] + " list" +
-        (exam === "drdo-sao" ? " with the early-bird price of ₹999 reserved." : ".") +
+        (exam === "drdo-sao" ? " with the early-bird price of ₹999 reserved." : " for exam updates.") +
         " We'll message you on " + phone.slice(0, 2) + "XXXXXX" + phone.slice(-2) + " at launch.");
     } catch (err) {
       const code = err && err.code ? String(err.code) : "";
