@@ -2,6 +2,7 @@ rules_version = '2';
 // TrickySSC Exams (separate Firebase project) — paste into Firestore → Rules → Publish.
 // Visitors can only ADD a waitlist entry. Nobody can read, change or delete entries
 // from the website; you see them in the Firebase console (Firestore → waitlist).
+// Logged-in students can read and update only their own profile in users/{uid}.
 service cloud.firestore {
   match /databases/{database}/documents {
 
@@ -22,7 +23,18 @@ service cloud.firestore {
       allow read, update, delete: if false;
     }
 
-    // Everything else is closed until the course (accounts, tests) is built.
+    match /users/{uid} {
+      allow read: if request.auth != null && request.auth.uid == uid;
+      allow create, update: if request.auth != null && request.auth.uid == uid
+        && request.resource.data.keys().hasOnly(['name','email','provider','createdAt','lastLogin'])
+        && request.resource.data.name is string && request.resource.data.name.size() < 80
+        && request.resource.data.email is string && request.resource.data.email.size() < 120
+        && request.resource.data.provider in ['google','password']
+        && request.resource.data.lastLogin == request.time;
+      allow delete: if false;
+    }
+
+    // Everything else is closed until the course (tests, payments) is built.
     match /{document=**} {
       allow read, write: if false;
     }
