@@ -165,16 +165,19 @@ if (!isConfigured) {
   catch (e) { say("err", "Couldn't connect to the login service. Check your internet and reload the page."); throw e; }
   const { auth, a } = kit;
 
-  a.onAuthStateChanged(auth, (user) => {
+  // Shows the logged-in box. Called on every auth change and again right after
+  // sign-up, because the name is saved a moment after the account is created.
+  function render(user) {
     $("boxOut").classList.toggle("hidden", !!user);
     $("boxIn").classList.toggle("hidden", !user);
-    if (user) {
-      $("uName").textContent = (user.displayName || user.email || "Student").split(" ")[0];
-      $("uEmail").textContent = user.email || "—";
-      const g = user.providerData.some((p) => p.providerId === "google.com");
-      $("uProv").textContent = g ? "Google" : "Email & password";
-    }
-  });
+    if (!user) return;
+    const name = (user.displayName || "").trim();
+    $("uName").textContent = name ? name.split(" ")[0] : (user.email || "Student").split("@")[0];
+    $("uEmail").textContent = user.email || "—";
+    const g = user.providerData.some((p) => p.providerId === "google.com");
+    $("uProv").textContent = g ? "Google" : "Email & password";
+  }
+  a.onAuthStateChanged(auth, render);
 
   $("gBtn").addEventListener("click", async () => {
     clearMsg();
@@ -201,7 +204,10 @@ if (!isConfigured) {
       if (mode === "signup") {
         const cred = await a.createUserWithEmailAndPassword(auth, email, pass);
         await a.updateProfile(cred.user, { displayName: name });
-        await saveProfile(cred.user, "password");
+        await cred.user.reload();
+        render(auth.currentUser);
+        window.dispatchEvent(new Event("tssc-auth-updated"));
+        await saveProfile(auth.currentUser, "password");
       } else {
         const cred = await a.signInWithEmailAndPassword(auth, email, pass);
         await saveProfile(cred.user, "password");
