@@ -215,3 +215,53 @@ footer.foot .logo small{background:var(--saffron)}
 .acct-row{display:flex;justify-content:space-between;gap:10px;padding:10px 0;border-bottom:1px solid var(--border);font-size:.94rem}
 .acct-row span{color:var(--text-muted)}
 .hidden{display:none!important}
+
+/* ---------- v4: course page + subject pages ---------- */
+.subj-list{display:grid;gap:10px}
+a.subj-row,div.subj-row{display:grid;grid-template-columns:44px 1fr repeat(4,minmax(70px,auto)) minmax(24px,auto);align-items:center;gap:14px;background:#fff;border:1px solid var(--border);border-radius:12px;padding:14px 16px;text-decoration:none;color:var(--text);transition:border-color .15s,box-shadow .15s}
+a.subj-row:hover{border-color:var(--saffron);box-shadow:0 6px 18px rgba(255,107,0,.12)}
+.subj-row .ico{width:44px;height:44px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:1.25rem;background:var(--c,#FFF1E6)}
+.subj-row h3{font-size:1.05rem;line-height:1.25}
+.subj-row h3 small{display:block;font-family:'Hind',sans-serif;font-weight:500;font-size:.8rem;color:var(--text-muted)}
+.subj-row .st{text-align:right;font-variant-numeric:tabular-nums}
+.subj-row .st b{display:block;font-family:'Baloo 2',sans-serif;font-size:1.15rem;line-height:1.1}
+.subj-row .st span{font-size:.72rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:.04em}
+.subj-row .go{color:var(--saffron);font-weight:800;font-size:1.2rem;text-align:right}
+.subj-row.soon{opacity:.75}
+.subj-row.soon .go{color:var(--text-muted);font-size:.72rem;font-weight:700;white-space:nowrap}
+.subj-row.total{background:var(--navy);color:#fff;border-color:var(--navy)}
+.subj-row.total .st span{color:#94A3B8}
+.subj-row.total h3{color:#fff}
+.subj-head{display:grid;grid-template-columns:44px 1fr repeat(4,minmax(70px,auto)) minmax(24px,auto);gap:14px;padding:0 16px;font-size:.72rem;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:.05em}
+.subj-head span{text-align:right}
+@media (max-width:760px){
+  .subj-head{display:none}
+  a.subj-row,div.subj-row{grid-template-columns:40px 1fr auto;row-gap:8px}
+  .subj-row.soon .go{font-size:.68rem;max-width:60px;white-space:normal;line-height:1.2}
+  .subj-row .ico{width:40px;height:40px}
+  .subj-row .stats{grid-column:2/3;display:flex;flex-wrap:wrap;gap:4px 14px}
+  .subj-row .st{text-align:left}
+  .subj-row .st b{display:inline;font-size:.98rem;margin-right:4px}
+  .subj-row .st span{text-transform:none;letter-spacing:0;font-size:.82rem}
+  .subj-row .go{grid-row:1;grid-column:3}
+}
+@media (min-width:761px){.subj-row .stats{display:contents}}
+
+.book-bar{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.ch-list{display:grid;gap:10px}
+.ch{display:grid;grid-template-columns:48px 1fr auto;align-items:center;gap:14px;background:#fff;border:1px solid var(--border);border-radius:12px;padding:14px 16px}
+.ch .no{width:48px;height:48px;border-radius:12px;background:#F1F5F9;display:flex;align-items:center;justify-content:center;font-family:'Baloo 2',sans-serif;font-weight:800;font-size:1.15rem;color:var(--text-dim)}
+.ch.free .no{background:#DCFCE7;color:#166534}
+.ch h3{font-size:1.02rem;line-height:1.3}
+.ch h3 .tag{font-family:'Hind',sans-serif;font-size:.7rem;font-weight:800;padding:.1rem .5rem;border-radius:999px;margin-left:.4rem;vertical-align:middle;background:#DCFCE7;color:#166534}
+.ch p{font-size:.84rem;color:var(--text-muted)}
+.ch .acts{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+.ch .acts a,.ch .acts span{display:inline-flex;align-items:center;gap:.35rem;font-size:.86rem;font-weight:700;padding:.48rem .8rem;border-radius:9px;text-decoration:none;white-space:nowrap;border:1.5px solid var(--border);color:var(--text);background:#fff}
+.ch .acts a.open{border-color:var(--saffron);color:var(--saffron-dark);background:#FFF7ED}
+.ch .acts a.open:hover{background:var(--saffron);color:#fff}
+.ch .acts .lock{color:var(--text-muted);background:#F8FAFC}
+.ch .acts .soon{color:var(--text-muted);background:#F8FAFC;border-style:dashed}
+@media (max-width:640px){.ch{grid-template-columns:40px 1fr}.ch .no{width:40px;height:40px;font-size:1rem}.ch .acts{grid-column:1/-1;justify-content:flex-start}}
+.mini-nav{display:flex;flex-wrap:wrap;gap:8px}
+.mini-nav a{font-size:.86rem;font-weight:600;text-decoration:none;color:var(--text-dim);background:#fff;border:1px solid var(--border);border-radius:999px;padding:.35rem .8rem}
+.mini-nav a:hover,.mini-nav a.on{border-color:var(--saffron);color:var(--saffron-dark)}
