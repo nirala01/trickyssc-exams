@@ -133,8 +133,8 @@ body{background:var(--bg)}
   var $ = function (id) { return document.getElementById(id); };
   var esc = function (s) { return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); };
   var T = {
-    hi: { q: "प्रश्न", of: "/", start: "टेस्ट शुरू करें", resume: "टेस्ट जारी रखें", restart: "नए सिरे से शुरू करें", submitQ: "क्या आप टेस्ट सबमिट करना चाहते हैं?", ans: "उत्तर दिए", unans: "उत्तर नहीं दिए", marked: "रिव्यू के लिए", cancel: "वापस जाएँ", yes: "हाँ, सबमिट करें", score: "आपका स्कोर", correct: "सही", wrong: "गलत", skipped: "छोड़े", acc: "सटीकता", time: "समय लगा", section: "विषय", qs: "प्रश्न", marks: "अंक", all: "सभी", onlyW: "केवल गलत", onlyS: "केवल छोड़े", yourAns: "आपका उत्तर", corr: "सही उत्तर", sol: "हल", retake: "दोबारा दें", timeUp: "समय समाप्त! आपका टेस्ट अपने-आप सबमिट हो गया।", notFound: "यह टेस्ट नहीं मिला।", back: "Super TET पेज पर जाएँ", join: "ग्रामीण भर्ती नोटिफिकेशन और अगले Free Mock की सूचना WhatsApp पर पाएँ", joinBtn: "फ्री अलर्ट के लिए जुड़ें →" },
-    en: { q: "Question", of: "of", start: "Start test", resume: "Resume test", restart: "Start afresh", submitQ: "Do you want to submit the test?", ans: "Answered", unans: "Not answered", marked: "Marked for review", cancel: "Go back", yes: "Yes, submit", score: "Your score", correct: "Correct", wrong: "Wrong", skipped: "Skipped", acc: "Accuracy", time: "Time taken", section: "Subject", qs: "Questions", marks: "Marks", all: "All", onlyW: "Wrong only", onlyS: "Skipped only", yourAns: "Your answer", corr: "Correct answer", sol: "Solution", retake: "Retake", timeUp: "Time is up! Your test was submitted automatically.", notFound: "This test was not found.", back: "Go to the Super TET page", join: "Get the Gramin notification and the next free mock on WhatsApp", joinBtn: "Join the free alert →" }
+    hi: { q: "प्रश्न", of: "/", start: "टेस्ट शुरू करें", resume: "टेस्ट जारी रखें", restart: "नए सिरे से शुरू करें", submitQ: "क्या आप टेस्ट सबमिट करना चाहते हैं?", ans: "उत्तर दिए", unans: "उत्तर नहीं दिए", marked: "रिव्यू के लिए", cancel: "वापस जाएँ", yes: "हाँ, सबमिट करें", score: "आपका स्कोर", correct: "सही", wrong: "गलत", skipped: "छोड़े", acc: "सटीकता", time: "समय लगा", section: "विषय", qs: "प्रश्न", marks: "अंक", all: "सभी", onlyW: "केवल गलत", onlyC: "केवल सही", lb: "रैंक और लीडरबोर्ड", lbLoad: "लीडरबोर्ड लोड हो रहा है…", rank: "आपकी रैंक", of2: "में से", pct: "आप इतने प्रतिशत छात्रों से आगे हैं", first: "लीडरबोर्ड में आपका पहला प्रयास गिना गया है", name: "नाम", time2: "समय", lbNA: "लीडरबोर्ड अभी उपलब्ध नहीं है। इंटरनेट जाँचकर पेज दोबारा खोलें।", lbFast: "1 मिनट से कम में सबमिट किए गए टेस्ट लीडरबोर्ड में नहीं गिने जाते।", you: "आप", onlyS: "केवल छोड़े", yourAns: "आपका उत्तर", corr: "सही उत्तर", sol: "हल", retake: "दोबारा दें", timeUp: "समय समाप्त! आपका टेस्ट अपने-आप सबमिट हो गया।", notFound: "यह टेस्ट नहीं मिला।", back: "Super TET पेज पर जाएँ", join: "ग्रामीण भर्ती नोटिफिकेशन और अगले Free Mock की सूचना WhatsApp पर पाएँ", joinBtn: "फ्री अलर्ट के लिए जुड़ें →" },
+    en: { q: "Question", of: "of", start: "Start test", resume: "Resume test", restart: "Start afresh", submitQ: "Do you want to submit the test?", ans: "Answered", unans: "Not answered", marked: "Marked for review", cancel: "Go back", yes: "Yes, submit", score: "Your score", correct: "Correct", wrong: "Wrong", skipped: "Skipped", acc: "Accuracy", time: "Time taken", section: "Subject", qs: "Questions", marks: "Marks", all: "All", onlyW: "Wrong only", onlyC: "Correct only", lb: "Rank & leaderboard", lbLoad: "Loading the leaderboard…", rank: "Your rank", of2: "of", pct: "You are ahead of this share of students", first: "Your first attempt is the one counted on the leaderboard", name: "Name", time2: "Time", lbNA: "The leaderboard isn't available right now. Check your internet and reopen the page.", lbFast: "Tests submitted in under 1 minute are not counted on the leaderboard.", you: "You", onlyS: "Skipped only", yourAns: "Your answer", corr: "Correct answer", sol: "Solution", retake: "Retake", timeUp: "Time is up! Your test was submitted automatically.", notFound: "This test was not found.", back: "Go to the Super TET page", join: "Get the Gramin notification and the next free mock on WhatsApp", joinBtn: "Join the free alert →" }
   };
   var lang = "hi";
   try { lang = localStorage.getItem("tssc-test-lang") === "en" ? "en" : "hi"; } catch (e) {}
@@ -168,15 +168,47 @@ body{background:var(--bg)}
     window.scrollTo(0, 0);
   }
 
+  function askLang() {
+    $("modalBox").innerHTML = '<h3 style="margin-bottom:6px">भाषा चुनें / Choose your language</h3>' +
+      '<p class="muted" style="margin-bottom:14px">निर्देश, प्रश्न और हल इसी भाषा में दिखेंगे; टेस्ट के बीच भी बदल सकते हैं।<br>Instructions, questions and solutions will appear in this language; you can switch during the test too.</p>' +
+      '<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px"><button class="btn btn-primary" type="button" data-pick="hi" style="font-size:1.15rem">हिंदी</button><button class="btn btn-primary" type="button" data-pick="en" style="font-size:1.15rem">English</button></div>';
+    $("modal").classList.remove("hidden");
+    $("modalBox").querySelectorAll("[data-pick]").forEach(function (b) { b.onclick = function () { $("modal").classList.add("hidden"); setLang(b.dataset.pick); }; });
+  }
   function renderStart() {
-    var n = D.questions.length, saved = load();
-    var rows = D.sections.map(function (s) { return "<tr><td>" + esc(L(s)) + '</td><td class="num">' + s.count + '</td><td class="num">' + s.count * D.marking.correct + "</td></tr>"; }).join("");
-    var hiList = "<li>कुल " + n + " प्रश्न, " + n * D.marking.correct + " अंक, समय " + D.duration + " मिनट।</li><li>सही उत्तर पर +" + D.marking.correct + ", गलत उत्तर पर " + D.marking.wrong + " अंक; छोड़े गए प्रश्न पर 0।</li><li>ऊपर हिंदी / English बटन से भाषा कभी भी बदलें।</li><li>समय पूरा होने पर टेस्ट अपने-आप सबमिट हो जाएगा। बीच में पेज बंद हो जाए तो उसी ब्राउज़र में वहीं से जारी रख सकते हैं।</li>";
-    var enList = "<li>" + n + " questions, " + n * D.marking.correct + " marks, " + D.duration + " minutes.</li><li>+" + D.marking.correct + " for a correct answer, " + D.marking.wrong + " for a wrong answer, 0 for a skipped one.</li><li>Switch language any time with the हिंदी / English buttons.</li><li>The test submits itself when time runs out. If the page closes, you can resume in the same browser.</li>";
-    $("startBox").innerHTML = "<h1>" + esc(L(D.title)) + "</h1><ul>" + (lang === "hi" ? hiList : enList) + '</ul><div class="tbl-wrap" style="margin-bottom:16px"><table class="tbl"><thead><tr><th>' + t("section") + '</th><th class="num">' + t("qs") + '</th><th class="num">' + t("marks") + "</th></tr></thead><tbody>" + rows + "</tbody></table></div>" +
+    var n = D.questions.length, saved = load(), mk = D.marking;
+    var rows = D.sections.map(function (s) { return "<tr><td>" + esc(L(s)) + '</td><td class="num">' + s.count + '</td><td class="num">' + s.count * mk.correct + "</td></tr>"; }).join("");
+    var I = lang === "hi" ? [
+      "कुल <b>" + n + " प्रश्न</b>, <b>" + n * mk.correct + " अंक</b>, समय <b>" + D.duration + " मिनट</b>। सभी प्रश्न अनिवार्य नहीं हैं।",
+      "सही उत्तर पर <b>+" + mk.correct + "</b>, गलत उत्तर पर <b>" + mk.wrong + "</b> अंक; छोड़े गए प्रश्न पर 0। अंदाज़े से उत्तर देने से पहले सोचें।",
+      "<b>सेव + अगला</b> से उत्तर सेव होकर अगला प्रश्न खुलता है; <b>रिव्यू + अगला</b> से प्रश्न बाद में देखने के लिए चिह्नित होता है; <b>उत्तर हटाएँ</b> से चुना विकल्प हट जाता है।",
+      "प्रश्न-संख्या पैनल के रंग: <span style='color:#16A34A'>हरा</span> = उत्तर दिया, <span style='color:#DC2626'>लाल</span> = देखा पर उत्तर नहीं, <span style='color:#7C3AED'>बैंगनी</span> = रिव्यू, धूसर = नहीं देखा। किसी भी संख्या पर क्लिक करके सीधे उस प्रश्न पर जाएँ।",
+      "समय पूरा होते ही टेस्ट अपने-आप सबमिट हो जाएगा। पेज बंद हो जाए तो उसी ब्राउज़र में खोलकर वहीं से जारी रखें।",
+      "परिणाम में आपका स्कोर, विषयवार अंक, <b>रैंक और लीडरबोर्ड</b> तथा हर प्रश्न का विस्तृत हल मिलेगा। लीडरबोर्ड में केवल <b>पहला प्रयास</b> गिना जाता है और आपका नाम दिखाई देगा।"
+    ] : [
+      "<b>" + n + " questions</b>, <b>" + n * mk.correct + " marks</b>, <b>" + D.duration + " minutes</b>. You do not have to attempt every question.",
+      "<b>+" + mk.correct + "</b> for a correct answer, <b>" + mk.wrong + "</b> for a wrong one, 0 for a skipped one. Think before you guess.",
+      "<b>Save & Next</b> saves your answer and opens the next question; <b>Mark & Next</b> flags it for review; <b>Clear</b> removes your choice.",
+      "Palette colours: <span style='color:#16A34A'>green</span> = answered, <span style='color:#DC2626'>red</span> = seen but not answered, <span style='color:#7C3AED'>purple</span> = marked for review, grey = not seen. Tap any number to jump to it.",
+      "The test submits itself when time runs out. If the page closes, reopen it in the same browser to continue.",
+      "The result shows your score, subject-wise marks, <b>rank and leaderboard</b>, and a detailed solution for every question. Only your <b>first attempt</b> counts on the leaderboard, and your name will be shown there."
+    ];
+    var nm = ""; try { nm = localStorage.getItem("tssc-lb-name") || ""; } catch (e) {}
+    var T2 = lang === "hi" ? { inst: "निर्देश ध्यान से पढ़ें", nm: "लीडरबोर्ड पर दिखने वाला नाम", ph: "जैसे: राहुल, प्रयागराज", agree: "मैंने सभी निर्देश पढ़ लिए हैं।", need: "आगे बढ़ने के लिए ऊपर का बॉक्स चुनें।", lang: "भाषा बदलें" } : { inst: "Read the instructions carefully", nm: "Name to show on the leaderboard", ph: "e.g. Rahul, Prayagraj", agree: "I have read all the instructions.", need: "Tick the box above to continue.", lang: "Change language" };
+    $("startBox").innerHTML = "<h1>" + esc(L(D.title)) + '</h1><p class="muted" style="margin:4px 0 10px">' + T2.inst + ' · <a href="#" id="chLang">' + T2.lang + "</a></p><ol style='margin:8px 0 16px 20px;color:var(--text-dim)'>" + I.map(function (x) { return "<li style='margin:6px 0'>" + x + "</li>"; }).join("") + "</ol>" +
+      '<div class="tbl-wrap" style="margin-bottom:16px"><table class="tbl"><thead><tr><th>' + t("section") + '</th><th class="num">' + t("qs") + '</th><th class="num">' + t("marks") + "</th></tr></thead><tbody>" + rows + "</tbody></table></div>" +
+      '<div class="form" style="max-width:420px;margin-bottom:12px"><div><label for="lbName">' + T2.nm + '</label><input id="lbName" maxlength="30" placeholder="' + T2.ph + '" value="' + esc(nm) + '"></div>' +
+      '<label style="display:flex;gap:8px;align-items:center;font-size:.95rem;color:var(--text);font-weight:600"><input type="checkbox" id="agree" style="width:auto"> ' + T2.agree + '</label><div class="form-msg" id="agreeMsg"></div></div>' +
       '<div style="display:flex;gap:10px;flex-wrap:wrap">' + (saved && !saved.done ? '<button class="btn btn-primary" id="goResume" type="button">' + t("resume") + '</button><button class="b" id="goNew" type="button">' + t("restart") + "</button>" : '<button class="btn btn-primary" id="goNew" type="button">' + t("start") + " →</button>") + "</div>";
-    if ($("goResume")) $("goResume").onclick = function () { st = saved; begin(); };
+    $("chLang").onclick = function (e) { e.preventDefault(); askLang(); };
+    var ok = function () {
+      if (!$("agree").checked) { $("agreeMsg").className = "form-msg err"; $("agreeMsg").textContent = T2.need; return false; }
+      try { localStorage.setItem("tssc-lb-name", ($("lbName").value || "").trim().slice(0, 30)); } catch (e) {}
+      return true;
+    };
+    if ($("goResume")) $("goResume").onclick = function () { if (!ok()) return; st = saved; begin(); };
     $("goNew").onclick = function () {
+      if (!ok()) return;
       st = { start: Date.now(), ans: new Array(n).fill(null), mk: new Array(n).fill(false), vis: new Array(n).fill(false), done: false };
       save(); begin();
     };
@@ -247,6 +279,11 @@ body{background:var(--bg)}
     $("mYes").onclick = function () { $("modal").classList.add("hidden"); finish(false); };
   };
 
+  function expHtml(e) {
+    var v = e ? (e[lang] || e.hi || e.en) : "";
+    if (Array.isArray(v)) return '<ul style="margin:6px 0 0 18px">' + v.map(function (x) { return "<li style='margin:3px 0'>" + esc(x) + "</li>"; }).join("") + "</ul>";
+    return " " + esc(v);
+  }
   function grade() {
     var r = { c: 0, w: 0, s: 0, score: 0, sec: D.sections.map(function () { return { c: 0, w: 0, s: 0, score: 0 }; }) };
     D.questions.forEach(function (q, i) {
@@ -276,6 +313,7 @@ body{background:var(--bg)}
     var secRows = D.sections.map(function (s, i) { var x = r.sec[i]; return "<tr><td>" + esc(L(s)) + '</td><td class="num">' + x.c + '</td><td class="num">' + x.w + '</td><td class="num">' + x.s + '</td><td class="num"><b>' + x.score + "</b> / " + s.count * D.marking.correct + "</td></tr>"; }).join("");
     var sols = D.questions.map(function (q, i) {
       var a = st.ans[i], st8 = a === null ? "s" : a === q.a ? "c" : "w";
+      if (resFilter === "c" && st8 !== "c") return "";
       if (resFilter === "w" && st8 !== "w") return "";
       if (resFilter === "s" && st8 !== "s") return "";
       var opts = (q.o[lang] || q.o.hi).map(function (o, k) {
@@ -283,17 +321,61 @@ body{background:var(--bg)}
         return '<div class="opt' + c + '" style="cursor:default"><span class="k">' + "ABCD"[k] + "</span><span>" + esc(o) + "</span></div>";
       }).join("");
       var tag = st8 === "c" ? '<span class="tagx t-c">' + t("correct") + " +" + D.marking.correct + "</span>" : st8 === "w" ? '<span class="tagx t-w">' + t("wrong") + " " + D.marking.wrong + "</span>" : '<span class="tagx t-s">' + t("skipped") + "</span>";
-      return '<div class="sol"><div class="qhead"><span class="qno">' + t("q") + " " + (i + 1) + '</span><span class="secname">' + esc(L(D.sections[q.s])) + "</span>" + tag + '</div><div class="qtext">' + esc(L(q.q)) + '</div><div class="opts">' + opts + '</div><div class="exp"><b>' + t("sol") + ":</b> " + esc(L(q.e)) + "</div></div>";
+      return '<div class="sol"><div class="qhead"><span class="qno">' + t("q") + " " + (i + 1) + '</span><span class="secname">' + esc(L(D.sections[q.s])) + "</span>" + tag + '</div><div class="qtext">' + esc(L(q.q)) + '</div><div class="opts">' + opts + '</div><div class="exp"><b>' + t("sol") + ":</b>" + expHtml(q.e) + "</div></div>";
     }).join("");
     $("resultBox").innerHTML = (auto ? '<p class="note" style="margin-bottom:12px">' + t("timeUp") + "</p>" : "") +
       '<div class="card"><div class="muted">' + esc(L(D.title)) + "</div><div style='margin-top:6px'>" + t("score") + '</div><div class="big">' + r.score + ' <span style="font-size:1.1rem;color:var(--text-muted)">/ ' + max + "</span></div>" +
       '<div class="res-kpi"><div><b>' + r.c + "</b><span>" + t("correct") + "</span></div><div><b>" + r.w + "</b><span>" + t("wrong") + "</span></div><div><b>" + r.s + "</b><span>" + t("skipped") + "</span></div><div><b>" + (att ? Math.round(r.c / att * 100) : 0) + "%</b><span>" + t("acc") + " · " + mins + " min</span></div></div>" +
       '<div class="tbl-wrap"><table class="tbl"><thead><tr><th>' + t("section") + '</th><th class="num">' + t("correct") + '</th><th class="num">' + t("wrong") + '</th><th class="num">' + t("skipped") + '</th><th class="num">' + t("marks") + "</th></tr></thead><tbody>" + secRows + "</tbody></table></div>" +
       '<div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:16px"><button class="b" id="again" type="button">↻ ' + t("retake") + '</button><a class="b" href="/super-tet" style="text-decoration:none">' + t("back") + "</a></div></div>" +
+      '<div class="card" style="margin-top:16px" id="lbBox"><h3 style="font-size:1.15rem">🏆 ' + t("lb") + '</h3><p class="muted">' + t("lbLoad") + "</p></div>" +
       '<div class="cta-band" style="margin:18px 0"><div><h3 style="font-size:1.2rem">' + t("join") + '</h3></div><a class="btn" href="/super-tet-gramin-vacancy#join">' + t("joinBtn") + "</a></div>" +
-      '<div class="filt"><button class="b' + (resFilter === "all" ? " pri" : "") + '" data-f="all" type="button">' + t("all") + '</button><button class="b' + (resFilter === "w" ? " pri" : "") + '" data-f="w" type="button">' + t("onlyW") + " (" + r.w + ')</button><button class="b' + (resFilter === "s" ? " pri" : "") + '" data-f="s" type="button">' + t("onlyS") + " (" + r.s + ")</button></div>" + sols;
+      '<div class="filt"><button class="b' + (resFilter === "all" ? " pri" : "") + '" data-f="all" type="button">' + t("all") + '</button><button class="b' + (resFilter === "c" ? " pri" : "") + '" data-f="c" type="button">' + t("onlyC") + " (" + r.c + ')</button><button class="b' + (resFilter === "w" ? " pri" : "") + '" data-f="w" type="button">' + t("onlyW") + " (" + r.w + ')</button><button class="b' + (resFilter === "s" ? " pri" : "") + '" data-f="s" type="button">' + t("onlyS") + " (" + r.s + ")</button></div>" + sols;
+    loadLb(r);
     $("again").onclick = function () { try { localStorage.removeItem(KEY); } catch (e) {} show("start"); renderStart(); };
     $("resultBox").querySelectorAll("[data-f]").forEach(function (b) { b.onclick = function () { resFilter = b.dataset.f; renderResult(false); }; });
+  }
+
+  function myVid() {
+    var v = ""; try { v = localStorage.getItem("tssc-vid") || ""; } catch (e) {}
+    if (!/^[a-z0-9]{8,24}$/.test(v)) { v = (Math.random().toString(36).slice(2, 12) + Date.now().toString(36)).replace(/[^a-z0-9]/g, "").slice(0, 16); try { localStorage.setItem("tssc-vid", v); } catch (e) {} }
+    return v;
+  }
+  function loadLb(r) {
+    var box = $("lbBox"); if (!box) return;
+    var vid = myVid(), sec = Math.round(((st.end || Date.now()) - st.start) / 1000);
+    var nm = "Student"; try { nm = (localStorage.getItem("tssc-lb-name") || "").trim().slice(0, 30) || "Student"; } catch (e) {}
+    var fmtT = function (x) { var m = Math.floor(x / 60), s2 = x % 60; return m + ":" + (s2 < 10 ? "0" : "") + s2; };
+    import("/assets/fb.js").then(function (m) {
+      if (!m.isConfigured) throw new Error("off");
+      return m.getDbKit();
+    }).then(function (k) {
+      var db = k.db, fs = k.fs, col = fs.collection(db, "leaderboards", D.id, "scores"), me = fs.doc(col, vid);
+      return fs.getDoc(me).then(function (snap) {
+        if (snap.exists() || sec < 60) return snap;
+        return fs.setDoc(me, { name: nm, score: r.score, c: r.c, w: r.w, s: r.s, sec: Math.min(sec, 7300), ts: fs.serverTimestamp() }).then(function () { return fs.getDoc(me); });
+      }).then(function (snap) {
+        var my = snap && snap.exists() ? snap.data() : null;
+        return Promise.all([
+          fs.getDocs(fs.query(col, fs.orderBy("score", "desc"), fs.limit(50))),
+          my ? fs.getCountFromServer(fs.query(col, fs.where("score", ">", my.score))) : null,
+          fs.getCountFromServer(col)
+        ]).then(function (res) { return { my: my, top: res[0], above: res[1], total: res[2] }; });
+      });
+    }).then(function (x) {
+      var total = x.total.data().count, rows = x.top.docs.map(function (d) { return { id: d.id, v: d.data() }; });
+      rows.sort(function (a, b) { return b.v.score - a.v.score || a.v.sec - b.v.sec; });
+      var head = "";
+      if (x.my) {
+        var rank = x.above.data().count + 1, pct = total > 1 ? Math.round((total - rank) / (total - 1) * 100) : 100;
+        head = '<div class="res-kpi"><div><b>' + rank + ' <span style="font-size:.9rem;color:var(--text-muted)">/ ' + total + "</span></b><span>" + t("rank") + "</span></div><div><b>" + pct + "%</b><span>" + t("pct") + "</span></div><div><b>" + x.my.score + "</b><span>" + t("score") + "</span></div><div><b>" + fmtT(x.my.sec) + "</b><span>" + t("time2") + "</span></div></div><p class='muted'>" + t("first") + "</p>";
+      } else { head = "<p class='muted'>" + t("lbFast") + "</p>"; }
+      var tr = rows.slice(0, 10).map(function (o, i) {
+        var mine = o.id === vid;
+        return "<tr" + (mine ? " style='background:#FFF7ED;font-weight:700'" : "") + "><td>" + (i + 1) + "</td><td>" + esc(o.v.name) + (mine ? " (" + t("you") + ")" : "") + '</td><td class="num">' + o.v.score + '</td><td class="num">' + o.v.c + '</td><td class="num">' + o.v.w + '</td><td class="num">' + fmtT(o.v.sec) + "</td></tr>";
+      }).join("");
+      box.innerHTML = '<h3 style="font-size:1.15rem">🏆 ' + t("lb") + "</h3>" + head + '<div class="tbl-wrap" style="margin-top:10px"><table class="tbl"><thead><tr><th>#</th><th>' + t("name") + '</th><th class="num">' + t("marks") + '</th><th class="num">' + t("correct") + '</th><th class="num">' + t("wrong") + '</th><th class="num">' + t("time2") + "</th></tr></thead><tbody>" + tr + "</tbody></table></div>";
+    }).catch(function () { box.innerHTML = '<h3 style="font-size:1.15rem">🏆 ' + t("lb") + "</h3><p class='muted'>" + t("lbNA") + "</p>"; });
   }
 
   window.addEventListener("beforeunload", function (e) { if (view === "exam") { e.preventDefault(); e.returnValue = ""; } });
@@ -305,7 +387,7 @@ body{background:var(--bg)}
     setLang(lang);
     var saved = load();
     if (saved && saved.done) { st = saved; show("result"); renderResult(false); }
-    else renderStart();
+    else { renderStart(); askLang(); }
   }).catch(function () { $("startBox").innerHTML = "<p>" + t("notFound") + ' <a href="/super-tet">' + t("back") + "</a></p>"; });
 })();
 </script>
