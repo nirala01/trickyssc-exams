@@ -26,6 +26,10 @@ const HI = {
   dup: (n) => "✅ यह नंबर पहले से " + n + " अलर्ट सूची में है। सब ठीक है।",
   fail: (code) => "अभी सेव नहीं हो पाया (" + code + ")। दोबारा कोशिश करें, या <a href=\"" + TELEGRAM + "\" target=\"_blank\" rel=\"noopener\">हमारा Telegram</a> जॉइन करें।"
 };
+// Same random browser id track.js uses, so the admin page can show which pages a candidate saw.
+function browserId() {
+  try { const v = localStorage.getItem("tssc-vid") || ""; return /^[a-z0-9]{8,24}$/.test(v) ? v : ""; } catch (e) { return ""; }
+}
 function isHi(exam) { return exam === "super-tet"; }
 
 function show(box, kind, html) {
@@ -89,6 +93,7 @@ function wire(form) {
         exam,
         inService: ["yes", "no", ""].includes(inService) ? inService : "",
         source: location.pathname.slice(0, 60) || "/",
+        vid: browserId(),
         createdAt: fs.serverTimestamp()
       });
       markJoined(exam);

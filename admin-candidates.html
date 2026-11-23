@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Candidates &amp; Visitors | TrickySSC Exams Admin</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/png" href="https://trickyssc.com/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&family=Baloo+2:wght@500;600;700;800&family=Hind:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<style>
+/* ADMIN-CANDIDATES-V1 */
+body{background:var(--bg)}
+.adm{padding:24px 0 60px}
+.adm h1{font-size:1.7rem}
+.adm h2{font-size:1.2rem;margin:0 0 4px}
+.adm .sub{color:var(--text-muted);font-size:.9rem;margin-bottom:12px}
+.toolbar{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:14px 0 18px}
+.seg{display:inline-flex;background:#fff;border:1px solid var(--border);border-radius:10px;padding:3px}
+.seg button{font:inherit;font-weight:700;font-size:.88rem;border:0;background:none;padding:.4rem .8rem;border-radius:8px;cursor:pointer;color:var(--text-dim)}
+.seg button.on{background:var(--navy);color:#fff}
+.sbtn{font:inherit;font-weight:700;font-size:.88rem;border:1px solid var(--border);background:#fff;border-radius:9px;padding:.45rem .85rem;cursor:pointer;color:var(--text)}
+.sbtn:hover{border-color:var(--saffron);color:var(--saffron-dark)}
+.stamp{font-size:.82rem;color:var(--text-muted);margin-left:auto}
+.kpis{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:22px}
+@media (max-width:900px){.kpis{grid-template-columns:repeat(2,1fr)}}
+.kpi{background:#fff;border:1px solid var(--border);border-radius:12px;padding:14px 16px}
+.kpi b{display:block;font-family:'Baloo 2',sans-serif;font-size:1.7rem;line-height:1.1}
+.kpi span{font-size:.8rem;color:var(--text-muted)}
+.panel{background:#fff;border:1px solid var(--border);border-radius:14px;padding:18px;margin-bottom:18px}
+.panel .tbl-wrap{border:0;border-radius:0}
+.panel .tbl td,.panel .tbl th{padding:8px 10px;font-size:.88rem;vertical-align:top}
+.panel .tbl th{font-size:.74rem}
+.ph{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;flex-wrap:wrap;margin-bottom:10px}
+.tag{display:inline-block;font-size:.72rem;font-weight:800;padding:.08rem .45rem;border-radius:999px;background:#F1F5F9;color:var(--text-dim);white-space:nowrap}
+.tag.land{background:#DCFCE7;color:#166534}
+.tag.who{background:#FFF1E6;color:#9A3412}
+.trail{margin:6px 0 0;padding-left:18px;font-size:.82rem;color:var(--text-dim)}
+.trail li{padding:1px 0}
+details.tr summary{cursor:pointer;color:var(--saffron-dark);font-weight:700;font-size:.84rem}
+.empty{color:var(--text-muted);font-size:.9rem;padding:8px 0}
+.gate{max-width:460px;margin:60px auto;text-align:center}
+.gate .card{padding:28px}
+.err{background:#FEE2E2;color:#7F1D1D;border-radius:10px;padding:12px 14px;margin-bottom:16px;font-size:.92rem}
+.wa{color:#15803D;font-weight:700;text-decoration:none}
+.mono{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.8rem;color:var(--text-muted)}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <div class="wrap nav-inner">
+    <a class="logo" href="/"><span class="logo-dot">⚡</span>Tricky<span>SSC</span><small>ADMIN</small></a>
+    <ul class="nav-links"><li><span id="who" class="muted"></span></li><li><button id="out" class="sbtn hidden" type="button">Log out</button></li></ul>
+  </div>
+</nav>
+
+<div class="wrap adm">
+  <div id="gate" class="gate">
+    <div class="card">
+      <h1 id="gTitle">Candidates &amp; visitors</h1>
+      <p class="sub" id="gText">Loading…</p>
+      <button id="gBtn" class="btn btn-primary hidden" type="button">Sign in with Google</button>
+    </div>
+  </div>
+
+  <div id="app" class="hidden">
+    <h1>Candidates &amp; visitors</h1>
+    <p class="sub">Who signed up, who logged in, and which page each visitor landed on. Visit tracking started on 23 Nov 2026. Times are IST. Your own visits from this browser are not counted.</p>
+    <div id="errBox" class="err hidden"></div>
+    <div class="toolbar">
+      <div class="seg" id="range">
+        <button type="button" data-r="today">Today</button>
+        <button type="button" data-r="7" class="on">7 days</button>
+        <button type="button" data-r="30">30 days</button>
+        <button type="button" data-r="all">All</button>
+      </div>
+      <button class="sbtn" id="refresh" type="button">↻ Refresh</button>
+      <button class="sbtn" id="csv" type="button">⬇ Sign-ups CSV</button>
+      <span class="stamp" id="stamp"></span>
+    </div>
+
+    <div class="kpis">
+      <div class="kpi"><b id="kViews">–</b><span>page views</span></div>
+      <div class="kpi"><b id="kVisitors">–</b><span>unique visitors</span></div>
+      <div class="kpi"><b id="kLand">–</b><span>visits (landings)</span></div>
+      <div class="kpi"><b id="kSign">–</b><span>sign-ups in range · <span id="kSignAll">–</span> total</span></div>
+      <div class="kpi"><b id="kUsers">–</b><span>logged-in accounts</span></div>
+    </div>
+
+    <div class="panel">
+      <div class="ph"><div><h2>Sign-ups (candidates)</h2><div class="sub">Everyone who joined the alert list, newest first, with the page they signed up on and the pages they saw.</div></div></div>
+      <div class="tbl-wrap"><table class="tbl"><thead><tr><th>Time</th><th>Name</th><th>Mobile</th><th>Email</th><th>Exam</th><th>Signed up on</th><th>Pages seen</th></tr></thead><tbody id="tSign"></tbody></table></div>
+    </div>
+
+    <div class="panel">
+      <div class="ph"><div><h2>Pages</h2><div class="sub">Views, unique visitors, how many visits started on the page (landed here) and sign-ups from it.</div></div></div>
+      <div class="tbl-wrap"><table class="tbl"><thead><tr><th>Page</th><th class="num">Views</th><th class="num">Visitors</th><th class="num">Landed here</th><th class="num">Sign-ups</th></tr></thead><tbody id="tPages"></tbody></table></div>
+    </div>
+
+    <div class="panel">
+      <div class="ph"><div><h2>Where visitors came from</h2><div class="sub">Source of each visit's first page. "direct" = typed, bookmarked or opened from an app that hides the link (WhatsApp often does).</div></div></div>
+      <div class="tbl-wrap"><table class="tbl"><thead><tr><th>Source</th><th class="num">Visits</th><th class="num">Visitors</th><th>Top landing page</th></tr></thead><tbody id="tSrc"></tbody></table></div>
+    </div>
+
+    <div class="panel">
+      <div class="ph"><div><h2>Visitors — who landed on which page</h2><div class="sub">One row per browser, last seen first. A name appears when that browser signed up or logged in.</div></div></div>
+      <div class="tbl-wrap"><table class="tbl"><thead><tr><th>Last seen</th><th>Visitor</th><th>Landed on</th><th>Source</th><th>Device</th><th class="num">Views</th><th>Pages</th></tr></thead><tbody id="tVis"></tbody></table></div>
+    </div>
+
+    <div class="panel">
+      <div class="ph"><div><h2>Logged-in accounts</h2><div class="sub">Students who created an account on exams.trickyssc.com.</div></div></div>
+      <div class="tbl-wrap"><table class="tbl"><thead><tr><th>Name</th><th>Email</th><th>Login</th><th>Joined</th><th>Last login</th><th class="num">Views</th></tr></thead><tbody id="tUsers"></tbody></table></div>
+    </div>
+
+    <div class="panel">
+      <div class="ph"><div><h2>Recent page views</h2><div class="sub">Latest 100, newest first.</div></div></div>
+      <div class="tbl-wrap"><table class="tbl"><thead><tr><th>Time</th><th>Page</th><th>Visitor</th><th>Source</th><th>Device</th></tr></thead><tbody id="tRecent"></tbody></table></div>
+    </div>
+  </div>
+</div>
+
+<script type="module">
+import { getAuthKit, getDbKit, isConfigured } from "/assets/fb.js";
+
+const ADMIN = "nirala01@gmail.com";
+// Mark this browser as the admin's, so track.js does not count your own visits.
+try { localStorage.setItem("tssc-admin", "1"); } catch (e) { /* storage blocked */ }
+
+const $ = (id) => document.getElementById(id);
+const esc = (s) => String(s == null ? "" : s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const IST = { timeZone: "Asia/Kolkata", day: "2-digit", month: "short", hour: "2-digit", minute: "2-digit", hour12: true };
+const fmt = (d) => (d ? d.toLocaleString("en-IN", IST) : "—");
+const toDate = (t) => (t && typeof t.toDate === "function" ? t.toDate() : null);
+const PAGE_NAMES = { "/": "Home", "/index": "Home", "/super-tet": "Super TET hub", "/super-tet-gramin-vacancy": "Gramin vacancy", "/login": "Login", "/404": "404 page" };
+const pageName = (p) => {
+  const k = String(p || "/").replace(/\.html$/, "").replace(/\/$/, "") || "/";
+  return PAGE_NAMES[k] || k;
+};
+const dev = (d) => (d === "m" ? "📱 Phone" : d === "d" ? "💻 Desktop" : "—");
+const EXAMS = { "super-tet": "Super TET", "drdo-sao": "DRDO SAO", "alc": "ALC", "esic-dd": "ESIC DD", "epfo": "EPFO" };
+
+let range = "7";
+let kit = null;
+let rows = { signups: [], users: [], visits: [] };
+
+function since(r) {
+  if (r === "all") return null;
+  if (r === "today") {
+    const ist = new Date(Date.now() + 5.5 * 3600e3);
+    ist.setUTCHours(0, 0, 0, 0);
+    return new Date(ist.getTime() - 5.5 * 3600e3);
+  }
+  return new Date(Date.now() - Number(r) * 864e5);
+}
+
+function showErr(text) { const b = $("errBox"); b.textContent = text; b.classList.toggle("hidden", !text); }
+
+async function load() {
+  showErr("");
+  $("stamp").textContent = "Loading…";
+  const { db, fs } = kit;
+  const from = since(range);
+  const visitQ = from
+    ? fs.query(fs.collection(db, "visits"), fs.where("ts", ">=", from), fs.orderBy("ts", "desc"), fs.limit(5000))
+    : fs.query(fs.collection(db, "visits"), fs.orderBy("ts", "desc"), fs.limit(5000));
+  try {
+    const [w, u, v] = await Promise.all([
+      fs.getDocs(fs.query(fs.collection(db, "waitlist"), fs.orderBy("createdAt", "desc"), fs.limit(5000))),
+      fs.getDocs(fs.collection(db, "users")),
+      fs.getDocs(visitQ)
+    ]);
+    rows.signups = w.docs.map((d) => ({ id: d.id, ...d.data() }));
+    rows.users = u.docs.map((d) => ({ id: d.id, ...d.data() }));
+    rows.visits = v.docs.map((d) => ({ id: d.id, ...d.data() }));
+    render();
+    $("stamp").textContent = "Updated " + fmt(new Date()) + (rows.visits.length >= 5000 ? " · showing latest 5,000 views" : "");
+  } catch (e) {
+    $("stamp").textContent = "";
+    showErr(String(e && e.code).includes("permission-denied")
+      ? "Firestore refused to share the data (permission denied). The new rules from firestore.rules need to be published in the Firebase console."
+      : "Couldn't load the data (" + ((e && (e.code || e.message)) || "error") + "). Check your internet and press Refresh.");
+  }
+}
+
+function render() {
+  const from = since(range);
+  const visits = rows.visits;
+  const signups = rows.signups;
+  const users = rows.users;
+  const signInRange = signups.filter((s) => { const d = toDate(s.createdAt); return !from || (d && d >= from); });
+
+  // who is who: browser id → name (from sign-up), user id → name (from account)
+  const userById = new Map(users.map((u) => [u.id, u]));
+  const nameByVid = new Map();
+  signups.forEach((s) => { if (s.vid && !nameByVid.has(s.vid)) nameByVid.set(s.vid, s.name + " (sign-up)"); });
+  visits.forEach((v) => {
+    if (v.uid && userById.has(v.uid) && !nameByVid.has(v.vid)) {
+      const u = userById.get(v.uid);
+      nameByVid.set(v.vid, (u.name || u.email || "Account") + " (account)");
+    }
+  });
+  const visitorLabel = (vid) => nameByVid.has(vid)
+    ? '<span class="tag who">' + esc(nameByVid.get(vid)) + "</span>"
+    : '<span class="mono">#' + esc(String(vid || "").slice(0, 6)) + "</span>";
+
+  // trails per browser, oldest first
+  const byVid = new Map();
+  visits.slice().reverse().forEach((v) => {
+    if (!byVid.has(v.vid)) byVid.set(v.vid, []);
+    byVid.get(v.vid).push(v);
+  });
+  const trailHtml = (list) => list && list.length
+    ? '<details class="tr"><summary>' + list.length + " page" + (list.length > 1 ? "s" : "") + '</summary><ol class="trail">' +
+      list.map((v) => "<li>" + esc(fmt(toDate(v.ts))) + " — " + esc(pageName(v.path)) + (v.landing ? ' <span class="tag land">landed</span>' : "") + "</li>").join("") + "</ol></details>"
+    : '<span class="muted">—</span>';
+
+  // KPIs
+  $("kViews").textContent = visits.length.toLocaleString("en-IN");
+  $("kVisitors").textContent = byVid.size.toLocaleString("en-IN");
+  $("kLand").textContent = visits.filter((v) => v.landing).length.toLocaleString("en-IN");
+  $("kSign").textContent = signInRange.length.toLocaleString("en-IN");
+  $("kSignAll").textContent = signups.length.toLocaleString("en-IN");
+  $("kUsers").textContent = users.length.toLocaleString("en-IN");
+
+  // Sign-ups (all of them, range shown in the KPI)
+  $("tSign").innerHTML = signups.length ? signups.map((s) => {
+    const phone = String(s.phone || "");
+    return "<tr><td>" + esc(fmt(toDate(s.createdAt))) + "</td><td><b>" + esc(s.name) + "</b></td>" +
+      '<td><a class="wa" href="https://wa.me/91' + esc(phone) + '" target="_blank" rel="noopener">' + esc(phone) + "</a></td>" +
+      "<td>" + esc(s.email || "—") + "</td><td>" + esc(EXAMS[s.exam] || s.exam) + "</td>" +
+      "<td>" + esc(pageName(s.source)) + "</td><td>" + (s.vid ? trailHtml(byVid.get(s.vid)) : '<span class="muted">—</span>') + "</td></tr>";
+  }).join("") : '<tr><td colspan="7" class="empty">No sign-ups yet.</td></tr>';
+
+  // Pages
+  const pages = new Map();
+  const pg = (p) => { const k = pageName(p); if (!pages.has(k)) pages.set(k, { views: 0, vids: new Set(), land: 0, sign: 0 }); return pages.get(k); };
+  visits.forEach((v) => { const r = pg(v.path); r.views++; r.vids.add(v.vid); if (v.landing) r.land++; });
+  signInRange.forEach((s) => { pg(s.source).sign++; });
+  const pageRows = [...pages.entries()].sort((a, b) => b[1].views - a[1].views);
+  $("tPages").innerHTML = pageRows.length ? pageRows.map(([k, r]) =>
+    "<tr><td><b>" + esc(k) + '</b></td><td class="num">' + r.views + '</td><td class="num">' + r.vids.size + '</td><td class="num">' + r.land + '</td><td class="num">' + r.sign + "</td></tr>"
+  ).join("") : '<tr><td colspan="5" class="empty">No page views in this range yet.</td></tr>';
+
+  // Sources (first page of each visit)
+  const srcs = new Map();
+  visits.filter((v) => v.landing).forEach((v) => {
+    const k = v.src || "direct";
+    if (!srcs.has(k)) srcs.set(k, { n: 0, vids: new Set(), pages: new Map() });
+    const r = srcs.get(k); r.n++; r.vids.add(v.vid);
+    const p = pageName(v.path); r.pages.set(p, (r.pages.get(p) || 0) + 1);
+  });
+  const srcRows = [...srcs.entries()].sort((a, b) => b[1].n - a[1].n);
+  $("tSrc").innerHTML = srcRows.length ? srcRows.map(([k, r]) => {
+    const top = [...r.pages.entries()].sort((a, b) => b[1] - a[1])[0];
+    return "<tr><td><b>" + esc(k) + '</b></td><td class="num">' + r.n + '</td><td class="num">' + r.vids.size + "</td><td>" + esc(top ? top[0] + " (" + top[1] + ")" : "—") + "</td></tr>";
+  }).join("") : '<tr><td colspan="4" class="empty">No visits in this range yet.</td></tr>';
+
+  // Visitors: one row per browser
+  const visitorRows = [...byVid.entries()].map(([vid, list]) => {
+    const first = list.find((v) => v.landing) || list[0];
+    const last = list[list.length - 1];
+    return { vid, list, first, last };
+  }).sort((a, b) => (toDate(b.last.ts) || 0) - (toDate(a.last.ts) || 0)).slice(0, 300);
+  $("tVis").innerHTML = visitorRows.length ? visitorRows.map((r) =>
+    "<tr><td>" + esc(fmt(toDate(r.last.ts))) + "</td><td>" + visitorLabel(r.vid) + "</td><td><b>" + esc(pageName(r.first.path)) + "</b></td>" +
+    "<td>" + esc(r.first.src || "direct") + "</td><td>" + dev(r.first.dev) + '</td><td class="num">' + r.list.length + "</td><td>" + trailHtml(r.list) + "</td></tr>"
+  ).join("") : '<tr><td colspan="7" class="empty">No visitors in this range yet.</td></tr>';
+
+  // Accounts
+  const viewsByUid = new Map();
+  visits.forEach((v) => { if (v.uid) viewsByUid.set(v.uid, (viewsByUid.get(v.uid) || 0) + 1); });
+  const userRows = users.slice().sort((a, b) => (toDate(b.lastLogin) || 0) - (toDate(a.lastLogin) || 0));
+  $("tUsers").innerHTML = userRows.length ? userRows.map((u) =>
+    "<tr><td><b>" + esc(u.name || "—") + "</b></td><td>" + esc(u.email || "—") + "</td><td>" + esc(u.provider === "google" ? "Google" : "Email") + "</td>" +
+    "<td>" + esc(fmt(toDate(u.createdAt))) + "</td><td>" + esc(fmt(toDate(u.lastLogin))) + '</td><td class="num">' + (viewsByUid.get(u.id) || 0) + "</td></tr>"
+  ).join("") : '<tr><td colspan="6" class="empty">No accounts yet.</td></tr>';
+
+  // Recent views
+  $("tRecent").innerHTML = visits.length ? visits.slice(0, 100).map((v) =>
+    "<tr><td>" + esc(fmt(toDate(v.ts))) + "</td><td>" + esc(pageName(v.path)) + (v.landing ? ' <span class="tag land">landed</span>' : "") + "</td>" +
+    "<td>" + visitorLabel(v.vid) + "</td><td>" + esc(v.landing ? (v.src || "direct") : "—") + "</td><td>" + dev(v.dev) + "</td></tr>"
+  ).join("") : '<tr><td colspan="5" class="empty">No page views in this range yet.</td></tr>';
+}
+
+function downloadCsv() {
+  const cell = (x) => '"' + String(x == null ? "" : x).replace(/"/g, '""') + '"';
+  const lines = [["Time (IST)", "Name", "Mobile", "Email", "Exam", "Signed up on"].map(cell).join(",")];
+  rows.signups.forEach((s) => lines.push([fmt(toDate(s.createdAt)), s.name, s.phone, s.email, EXAMS[s.exam] || s.exam, pageName(s.source)].map(cell).join(",")));
+  const blob = new Blob(["﻿" + lines.join("\n")], { type: "text/csv;charset=utf-8" });
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = "trickyssc-exams-signups-" + new Date().toISOString().slice(0, 10) + ".csv";
+  a.click();
+  setTimeout(() => URL.revokeObjectURL(a.href), 2000);
+}
+
+document.querySelectorAll("#range button").forEach((b) => b.addEventListener("click", () => {
+  document.querySelectorAll("#range button").forEach((x) => x.classList.toggle("on", x === b));
+  range = b.dataset.r;
+  load();
+}));
+$("refresh").addEventListener("click", load);
+$("csv").addEventListener("click", downloadCsv);
+
+function gate(title, text, showBtn) {
+  $("app").classList.add("hidden");
+  $("gate").classList.remove("hidden");
+  $("gTitle").textContent = title;
+  $("gText").textContent = text;
+  $("gBtn").classList.toggle("hidden", !showBtn);
+}
+
+if (!isConfigured) {
+  gate("Not set up", "Firebase is not configured for this site yet.", false);
+} else {
+  const { auth, a } = await getAuthKit();
+  $("gBtn").addEventListener("click", async () => {
+    try {
+      const p = new a.GoogleAuthProvider();
+      p.setCustomParameters({ prompt: "select_account", login_hint: ADMIN });
+      await a.signInWithPopup(auth, p);
+    } catch (e) {
+      if (e.code !== "auth/popup-closed-by-user" && e.code !== "auth/cancelled-popup-request") $("gText").textContent = "Sign-in failed (" + e.code + "). Try again.";
+    }
+  });
+  $("out").addEventListener("click", () => a.signOut(auth));
+  a.onAuthStateChanged(auth, async (user) => {
+    $("out").classList.toggle("hidden", !user);
+    $("who").textContent = user ? (user.email || "") : "";
+    if (!user) return gate("Candidates & visitors", "Admin only. Sign in with " + ADMIN + ".", true);
+    if ((user.email || "").toLowerCase() !== ADMIN || !user.emailVerified) {
+      return gate("Not allowed", "This page is only for the TrickySSC admin. You are signed in as " + (user.email || "another account") + ".", false);
+    }
+    $("gate").classList.add("hidden");
+    $("app").classList.remove("hidden");
+    if (!kit) kit = await getDbKit();
+    load();
+  });
+}
+</script>
+</body>
+</html>

@@ -1,14 +1,20 @@
 rules_version = '2';
 // TrickySSC Exams (separate Firebase project) — paste into Firestore → Rules → Publish.
-// Visitors can only ADD a waitlist entry. Nobody can read, change or delete entries
-// from the website; you see them in the Firebase console (Firestore → waitlist).
-// Logged-in students can read and update only their own profile in users/{uid}.
+// Visitors can only ADD a waitlist entry or a page-visit record. Nobody can change or delete them
+// from the website. Only the admin Google account (nirala01@gmail.com) can read them, on
+// /admin-candidates. Logged-in students can read and update only their own profile in users/{uid}.
 service cloud.firestore {
   match /databases/{database}/documents {
 
+    function isAdmin() {
+      return request.auth != null
+        && request.auth.token.email == 'nirala01@gmail.com'
+        && request.auth.token.email_verified == true;
+    }
+
     match /waitlist/{entryId} {
       allow create: if
-        request.resource.data.keys().hasOnly(['name','phone','email','exam','inService','source','createdAt'])
+        request.resource.data.keys().hasOnly(['name','phone','email','exam','inService','source','vid','createdAt'])
         && request.resource.data.keys().hasAll(['name','phone','exam','createdAt'])
         && request.resource.data.name is string
         && request.resource.data.name.size() >= 2 && request.resource.data.name.size() < 80
@@ -19,12 +25,33 @@ service cloud.firestore {
         && (!('email' in request.resource.data) || (request.resource.data.email is string && request.resource.data.email.size() < 120))
         && (!('inService' in request.resource.data) || request.resource.data.inService in ['yes','no',''])
         && (!('source' in request.resource.data) || (request.resource.data.source is string && request.resource.data.source.size() <= 60))
+        && (!('vid' in request.resource.data) || (request.resource.data.vid is string && (request.resource.data.vid == '' || request.resource.data.vid.matches('^[a-z0-9]{8,24}$'))))
         && request.resource.data.createdAt == request.time;
-      allow read, update, delete: if false;
+      allow read: if isAdmin();
+      allow update, delete: if false;
+    }
+
+    // One document per page view, written by assets/track.js. No IP, phone or email.
+    match /visits/{visitId} {
+      allow create: if
+        request.resource.data.keys().hasOnly(['path','title','src','landing','vid','sid','dev','uid','ts'])
+        && request.resource.data.keys().hasAll(['path','vid','sid','ts'])
+        && request.resource.data.path is string && request.resource.data.path.size() <= 80
+        && (!('title' in request.resource.data) || (request.resource.data.title is string && request.resource.data.title.size() <= 100))
+        && (!('src' in request.resource.data) || (request.resource.data.src is string && request.resource.data.src.size() <= 60))
+        && (!('landing' in request.resource.data) || request.resource.data.landing is bool)
+        && request.resource.data.vid is string && request.resource.data.vid.matches('^[a-z0-9]{8,24}$')
+        && request.resource.data.sid is string && request.resource.data.sid.matches('^[a-z0-9]{8,24}$')
+        && (!('dev' in request.resource.data) || request.resource.data.dev in ['m','d'])
+        && (!('uid' in request.resource.data) || (request.resource.data.uid is string
+              && (request.resource.data.uid == '' || (request.auth != null && request.resource.data.uid == request.auth.uid))))
+        && request.resource.data.ts == request.time;
+      allow read: if isAdmin();
+      allow update, delete: if false;
     }
 
     match /users/{uid} {
-      allow read: if request.auth != null && request.auth.uid == uid;
+      allow read: if (request.auth != null && request.auth.uid == uid) || isAdmin();
       allow create, update: if request.auth != null && request.auth.uid == uid
         && request.resource.data.keys().hasOnly(['name','email','provider','createdAt','lastLogin'])
         && request.resource.data.name is string && request.resource.data.name.size() < 80
