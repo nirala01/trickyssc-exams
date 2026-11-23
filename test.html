@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3MMDNVBJQN"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-3MMDNVBJQN");</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Super TET Mock Test | TrickySSC Exams</title>
+<meta name="robots" content="noindex, follow">
+<link rel="icon" type="image/png" href="https://trickyssc.com/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&family=Baloo+2:wght@500;600;700;800&family=Hind:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<style>
+/* EXAMS-TEST-PLAYER-V1 */
+body{background:var(--bg)}
+.tp-top{position:sticky;top:0;z-index:40;background:var(--navy);color:#fff}
+.tp-top .in{display:flex;align-items:center;gap:10px;height:56px}
+.tp-top .ttl{font-family:'Baloo 2',sans-serif;font-weight:700;font-size:1rem;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.timer{font-family:'Baloo 2',sans-serif;font-weight:800;font-size:1.15rem;background:rgba(255,255,255,.1);padding:.2rem .7rem;border-radius:8px;font-variant-numeric:tabular-nums}
+.timer.low{background:#DC2626}
+.lang{display:inline-flex;background:rgba(255,255,255,.1);border-radius:8px;padding:2px}
+.lang button{font:inherit;font-size:.8rem;font-weight:700;border:0;background:none;color:#CBD5E1;padding:.25rem .55rem;border-radius:6px;cursor:pointer}
+.lang button.on{background:#fff;color:var(--navy)}
+.light .lang{background:#F1F5F9}.light .lang button{color:var(--text-dim)}.light .lang button.on{background:var(--navy);color:#fff}
+.tp{display:grid;grid-template-columns:1fr 300px;gap:16px;padding:16px 0 90px}
+@media (max-width:900px){.tp{grid-template-columns:1fr}}
+.qcard{background:#fff;border:1px solid var(--border);border-radius:14px;padding:18px}
+.qhead{display:flex;justify-content:space-between;gap:10px;align-items:center;margin-bottom:10px;flex-wrap:wrap}
+.qno{font-family:'Baloo 2',sans-serif;font-weight:800;font-size:1.05rem}
+.secname{font-size:.78rem;font-weight:700;color:var(--saffron-dark);background:#FFF7ED;padding:.15rem .55rem;border-radius:999px}
+.mark{font-size:.78rem;color:var(--text-muted)}
+.qtext{font-size:1.08rem;line-height:1.65;margin:6px 0 14px;white-space:pre-line}
+.opts{display:grid;gap:9px}
+.opt{display:flex;gap:10px;align-items:flex-start;text-align:left;font:inherit;font-size:1rem;background:#fff;border:1.5px solid var(--border);border-radius:11px;padding:11px 13px;cursor:pointer;color:var(--text)}
+.opt:hover{border-color:#FDBA74}
+.opt .k{flex:0 0 26px;height:26px;border-radius:50%;border:1.5px solid #CBD5E1;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.85rem;color:var(--text-dim)}
+.opt.sel{border-color:var(--saffron);background:#FFF7ED}
+.opt.sel .k{background:var(--saffron);border-color:var(--saffron);color:#fff}
+.opt.right{border-color:#16A34A;background:#F0FDF4}.opt.right .k{background:#16A34A;border-color:#16A34A;color:#fff}
+.opt.wrong{border-color:#DC2626;background:#FEF2F2}.opt.wrong .k{background:#DC2626;border-color:#DC2626;color:#fff}
+.acts{position:fixed;left:0;right:0;bottom:0;z-index:30;background:#fff;border-top:1px solid var(--border)}
+.acts .in{display:flex;gap:8px;padding:10px 16px;max-width:1120px;margin:0 auto;flex-wrap:wrap}
+.b{font:inherit;font-weight:700;font-size:.92rem;border:1.5px solid var(--border);background:#fff;color:var(--text);border-radius:10px;padding:.55rem .9rem;cursor:pointer}
+.b.pri{background:var(--green);border-color:var(--green);color:#fff}
+.b.vio{background:#7C3AED;border-color:#7C3AED;color:#fff}
+.b.red{background:#DC2626;border-color:#DC2626;color:#fff}
+.sp{flex:1}
+.side{background:#fff;border:1px solid var(--border);border-radius:14px;padding:14px;align-self:start;position:sticky;top:70px;max-height:calc(100vh - 150px);overflow:auto}
+@media (max-width:900px){.side{position:static}}
+.legend{display:grid;grid-template-columns:1fr 1fr;gap:6px;font-size:.78rem;color:var(--text-dim);margin-bottom:10px}
+.legend span{display:flex;align-items:center;gap:6px}
+.dot{width:14px;height:14px;border-radius:4px;display:inline-block}
+.d-na{background:#E2E8F0}.d-nv{background:#FCA5A5}.d-an{background:#4ADE80}.d-mk{background:#A78BFA}.d-am{background:#7C3AED;box-shadow:inset 0 0 0 3px #4ADE80}
+.pal-sec{font-size:.78rem;font-weight:800;color:var(--text-dim);margin:10px 0 6px}
+.pal{display:grid;grid-template-columns:repeat(8,1fr);gap:5px}
+.pal button{font:inherit;font-size:.78rem;font-weight:700;border:0;border-radius:6px;padding:6px 0;cursor:pointer;background:#E2E8F0;color:var(--text)}
+.pal button.nv{background:#FCA5A5}.pal button.an{background:#4ADE80}.pal button.mk{background:#A78BFA;color:#fff}.pal button.am{background:#7C3AED;color:#fff;box-shadow:inset 0 0 0 3px #4ADE80}
+.pal button.cur{outline:2.5px solid var(--navy);outline-offset:1px}
+.start{max-width:760px;margin:24px auto;background:#fff;border:1px solid var(--border);border-radius:16px;padding:24px}
+.start h1{font-size:1.6rem}
+.start ul{margin:12px 0 16px 20px;color:var(--text-dim)}
+.start li{margin:4px 0}
+.modal{position:fixed;inset:0;background:rgba(15,27,45,.55);display:flex;align-items:center;justify-content:center;z-index:80;padding:16px}
+.modal .box{background:#fff;border-radius:16px;max-width:440px;width:100%;padding:22px}
+.modal .row{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--border);font-size:.95rem}
+.res-kpi{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:14px 0}
+@media (max-width:640px){.res-kpi{grid-template-columns:repeat(2,1fr)}}
+.res-kpi div{background:#F8FAFC;border:1px solid var(--border);border-radius:12px;padding:12px}
+.res-kpi b{display:block;font-family:'Baloo 2',sans-serif;font-size:1.5rem;line-height:1.1}
+.res-kpi span{font-size:.78rem;color:var(--text-muted)}
+.big{font-family:'Baloo 2',sans-serif;font-size:2.6rem;font-weight:800;color:var(--saffron-dark);line-height:1}
+.filt{display:flex;gap:6px;flex-wrap:wrap;margin:14px 0}
+.sol{background:#fff;border:1px solid var(--border);border-radius:14px;padding:16px;margin-bottom:12px}
+.exp{margin-top:10px;background:#F8FAFC;border-left:4px solid var(--sky);padding:10px 12px;border-radius:8px;font-size:.94rem;color:var(--text-dim)}
+.tagx{font-size:.72rem;font-weight:800;padding:.1rem .5rem;border-radius:999px}
+.t-c{background:#DCFCE7;color:#166534}.t-w{background:#FEE2E2;color:#991B1B}.t-s{background:#F1F5F9;color:var(--text-dim)}
+</style>
+</head>
+<body>
+<div id="startView">
+  <nav class="nav light"><div class="wrap nav-inner"><a class="logo" href="/"><span class="logo-dot">⚡</span>Tricky<span>SSC</span><small>EXAMS</small></a>
+    <div class="lang" data-lang><button type="button" data-l="hi" class="on">हिंदी</button><button type="button" data-l="en">English</button></div></div></nav>
+  <div class="wrap"><div class="start" id="startBox"><p class="muted">लोड हो रहा है…</p></div></div>
+</div>
+
+<div id="examView" class="hidden">
+  <div class="tp-top"><div class="wrap in">
+    <div class="ttl" id="tTitle"></div>
+    <div class="lang" data-lang><button type="button" data-l="hi">हि</button><button type="button" data-l="en">EN</button></div>
+    <div class="timer" id="timer">--:--</div>
+  </div></div>
+  <div class="wrap tp">
+    <div>
+      <div class="qcard">
+        <div class="qhead"><span class="qno" id="qNo"></span><span class="secname" id="qSec"></span><span class="mark">+3 / −1</span></div>
+        <div class="qtext" id="qText"></div>
+        <div class="opts" id="qOpts"></div>
+      </div>
+    </div>
+    <aside class="side">
+      <div class="legend">
+        <span><i class="dot d-an"></i><b id="cAn">0</b>&nbsp;उत्तर दिया</span>
+        <span><i class="dot d-nv"></i><b id="cNv">0</b>&nbsp;उत्तर नहीं</span>
+        <span><i class="dot d-na"></i><b id="cNa">0</b>&nbsp;नहीं देखा</span>
+        <span><i class="dot d-mk"></i><b id="cMk">0</b>&nbsp;रिव्यू</span>
+      </div>
+      <div id="palette"></div>
+    </aside>
+  </div>
+  <div class="acts"><div class="in">
+    <button class="b" type="button" id="bPrev">← पिछला</button>
+    <button class="b" type="button" id="bClear">उत्तर हटाएँ</button>
+    <button class="b vio" type="button" id="bMark">रिव्यू + अगला</button>
+    <span class="sp"></span>
+    <button class="b pri" type="button" id="bNext">सेव + अगला →</button>
+    <button class="b red" type="button" id="bSubmit">सबमिट</button>
+  </div></div>
+</div>
+
+<div id="resultView" class="hidden">
+  <nav class="nav light"><div class="wrap nav-inner"><a class="logo" href="/"><span class="logo-dot">⚡</span>Tricky<span>SSC</span><small>EXAMS</small></a>
+    <div class="lang" data-lang><button type="button" data-l="hi">हिंदी</button><button type="button" data-l="en">English</button></div></div></nav>
+  <div class="wrap" style="padding:20px 16px 60px" id="resultBox"></div>
+</div>
+
+<div id="modal" class="modal hidden"><div class="box" id="modalBox"></div></div>
+
+<script>
+(function () {
+  "use strict";
+  var $ = function (id) { return document.getElementById(id); };
+  var esc = function (s) { return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); };
+  var T = {
+    hi: { q: "प्रश्न", of: "/", start: "टेस्ट शुरू करें", resume: "टेस्ट जारी रखें", restart: "नए सिरे से शुरू करें", submitQ: "क्या आप टेस्ट सबमिट करना चाहते हैं?", ans: "उत्तर दिए", unans: "उत्तर नहीं दिए", marked: "रिव्यू के लिए", cancel: "वापस जाएँ", yes: "हाँ, सबमिट करें", score: "आपका स्कोर", correct: "सही", wrong: "गलत", skipped: "छोड़े", acc: "सटीकता", time: "समय लगा", section: "विषय", qs: "प्रश्न", marks: "अंक", all: "सभी", onlyW: "केवल गलत", onlyS: "केवल छोड़े", yourAns: "आपका उत्तर", corr: "सही उत्तर", sol: "हल", retake: "दोबारा दें", timeUp: "समय समाप्त! आपका टेस्ट अपने-आप सबमिट हो गया।", notFound: "यह टेस्ट नहीं मिला।", back: "Super TET पेज पर जाएँ", join: "ग्रामीण भर्ती नोटिफिकेशन और अगले Free Mock की सूचना WhatsApp पर पाएँ", joinBtn: "फ्री अलर्ट के लिए जुड़ें →" },
+    en: { q: "Question", of: "of", start: "Start test", resume: "Resume test", restart: "Start afresh", submitQ: "Do you want to submit the test?", ans: "Answered", unans: "Not answered", marked: "Marked for review", cancel: "Go back", yes: "Yes, submit", score: "Your score", correct: "Correct", wrong: "Wrong", skipped: "Skipped", acc: "Accuracy", time: "Time taken", section: "Subject", qs: "Questions", marks: "Marks", all: "All", onlyW: "Wrong only", onlyS: "Skipped only", yourAns: "Your answer", corr: "Correct answer", sol: "Solution", retake: "Retake", timeUp: "Time is up! Your test was submitted automatically.", notFound: "This test was not found.", back: "Go to the Super TET page", join: "Get the Gramin notification and the next free mock on WhatsApp", joinBtn: "Join the free alert →" }
+  };
+  var lang = "hi";
+  try { lang = localStorage.getItem("tssc-test-lang") === "en" ? "en" : "hi"; } catch (e) {}
+  var t = function (k) { return T[lang][k]; };
+  var L = function (o) { return o ? (o[lang] || o.hi || o.en || "") : ""; };
+
+  var id = (new URLSearchParams(location.search).get("t") || "").toLowerCase();
+  var D = null, st = null, cur = 0, tick = null, view = "start", resFilter = "all";
+  var KEY = "tssc-test-" + id, RKEY = "tssc-result-" + id;
+  function save() { try { localStorage.setItem(KEY, JSON.stringify(st)); } catch (e) {} }
+  function load() { try { return JSON.parse(localStorage.getItem(KEY) || "null"); } catch (e) { return null; } }
+
+  function setLang(l) {
+    lang = l;
+    try { localStorage.setItem("tssc-test-lang", l); } catch (e) {}
+    document.documentElement.lang = l === "en" ? "en" : "hi";
+    document.querySelectorAll("[data-lang] button").forEach(function (b) { b.classList.toggle("on", b.dataset.l === l); });
+    if (!D) return;
+    if (view === "start") renderStart();
+    if (view === "exam") { renderQ(); renderPalette(); }
+    if (view === "result") renderResult();
+  }
+  document.querySelectorAll("[data-lang] button").forEach(function (b) { b.addEventListener("click", function () { setLang(b.dataset.l); }); });
+
+  function secOf(i) { return D.questions[i].s; }
+  function show(v) {
+    view = v;
+    $("startView").classList.toggle("hidden", v !== "start");
+    $("examView").classList.toggle("hidden", v !== "exam");
+    $("resultView").classList.toggle("hidden", v !== "result");
+    window.scrollTo(0, 0);
+  }
+
+  function renderStart() {
+    var n = D.questions.length, saved = load();
+    var rows = D.sections.map(function (s) { return "<tr><td>" + esc(L(s)) + '</td><td class="num">' + s.count + '</td><td class="num">' + s.count * D.marking.correct + "</td></tr>"; }).join("");
+    var hiList = "<li>कुल " + n + " प्रश्न, " + n * D.marking.correct + " अंक, समय " + D.duration + " मिनट।</li><li>सही उत्तर पर +" + D.marking.correct + ", गलत उत्तर पर " + D.marking.wrong + " अंक; छोड़े गए प्रश्न पर 0।</li><li>ऊपर हिंदी / English बटन से भाषा कभी भी बदलें।</li><li>समय पूरा होने पर टेस्ट अपने-आप सबमिट हो जाएगा। बीच में पेज बंद हो जाए तो उसी ब्राउज़र में वहीं से जारी रख सकते हैं।</li>";
+    var enList = "<li>" + n + " questions, " + n * D.marking.correct + " marks, " + D.duration + " minutes.</li><li>+" + D.marking.correct + " for a correct answer, " + D.marking.wrong + " for a wrong answer, 0 for a skipped one.</li><li>Switch language any time with the हिंदी / English buttons.</li><li>The test submits itself when time runs out. If the page closes, you can resume in the same browser.</li>";
+    $("startBox").innerHTML = "<h1>" + esc(L(D.title)) + "</h1><ul>" + (lang === "hi" ? hiList : enList) + '</ul><div class="tbl-wrap" style="margin-bottom:16px"><table class="tbl"><thead><tr><th>' + t("section") + '</th><th class="num">' + t("qs") + '</th><th class="num">' + t("marks") + "</th></tr></thead><tbody>" + rows + "</tbody></table></div>" +
+      '<div style="display:flex;gap:10px;flex-wrap:wrap">' + (saved && !saved.done ? '<button class="btn btn-primary" id="goResume" type="button">' + t("resume") + '</button><button class="b" id="goNew" type="button">' + t("restart") + "</button>" : '<button class="btn btn-primary" id="goNew" type="button">' + t("start") + " →</button>") + "</div>";
+    if ($("goResume")) $("goResume").onclick = function () { st = saved; begin(); };
+    $("goNew").onclick = function () {
+      st = { start: Date.now(), ans: new Array(n).fill(null), mk: new Array(n).fill(false), vis: new Array(n).fill(false), done: false };
+      save(); begin();
+    };
+  }
+
+  function begin() {
+    show("exam");
+    $("tTitle").textContent = L(D.title);
+    cur = 0; st.vis[0] = true; save();
+    renderQ(); renderPalette(); runTimer();
+  }
+  function left() { return Math.max(0, D.duration * 60000 - (Date.now() - st.start)); }
+  function runTimer() {
+    clearInterval(tick);
+    var f = function () {
+      var ms = left(), m = Math.floor(ms / 60000), s = Math.floor(ms / 1000) % 60;
+      $("timer").textContent = (m < 10 ? "0" : "") + m + ":" + (s < 10 ? "0" : "") + s;
+      $("timer").classList.toggle("low", ms < 5 * 60000);
+      if (ms <= 0) { clearInterval(tick); finish(true); }
+    };
+    f(); tick = setInterval(f, 1000);
+  }
+  function renderQ() {
+    var q = D.questions[cur];
+    $("qNo").textContent = t("q") + " " + (cur + 1) + " " + t("of") + " " + D.questions.length;
+    $("qSec").textContent = L(D.sections[q.s]);
+    $("qText").textContent = L(q.q);
+    var opts = q.o[lang] || q.o.hi;
+    $("qOpts").innerHTML = opts.map(function (o, k) {
+      return '<button type="button" class="opt' + (st.ans[cur] === k ? " sel" : "") + '" data-k="' + k + '"><span class="k">' + "ABCD"[k] + "</span><span>" + esc(o) + "</span></button>";
+    }).join("");
+    $("qOpts").querySelectorAll(".opt").forEach(function (b) {
+      b.onclick = function () { st.ans[cur] = Number(b.dataset.k); save(); renderQ(); renderPalette(); };
+    });
+  }
+  function cls(i) {
+    var a = st.ans[i] !== null, m = st.mk[i];
+    if (a && m) return "am"; if (m) return "mk"; if (a) return "an"; if (st.vis[i]) return "nv"; return "";
+  }
+  function renderPalette() {
+    var html = "", n = D.questions.length, i = 0, c = { an: 0, nv: 0, na: 0, mk: 0 };
+    D.sections.forEach(function (s, si) {
+      html += '<div class="pal-sec">' + esc(L(s)) + '</div><div class="pal">';
+      for (var j = 0; j < s.count && i < n; j++, i++) html += '<button type="button" data-i="' + i + '" class="' + cls(i) + (i === cur ? " cur" : "") + '">' + (i + 1) + "</button>";
+      html += "</div>";
+    });
+    for (var k = 0; k < n; k++) { var x = cls(k); if (x === "an") c.an++; else if (x === "nv") c.nv++; else if (x === "mk" || x === "am") c.mk++; else c.na++; if (x === "am") c.an++; }
+    $("palette").innerHTML = html;
+    $("cAn").textContent = c.an; $("cNv").textContent = c.nv; $("cNa").textContent = c.na; $("cMk").textContent = c.mk;
+    $("palette").querySelectorAll("button").forEach(function (b) { b.onclick = function () { go(Number(b.dataset.i)); }; });
+  }
+  function go(i) {
+    if (i < 0 || i >= D.questions.length) return;
+    cur = i; st.vis[i] = true; save(); renderQ(); renderPalette();
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+  $("bNext").onclick = function () { st.mk[cur] = false; save(); if (cur < D.questions.length - 1) go(cur + 1); else renderPalette(); };
+  $("bPrev").onclick = function () { go(cur - 1); };
+  $("bMark").onclick = function () { st.mk[cur] = true; save(); if (cur < D.questions.length - 1) go(cur + 1); else renderPalette(); };
+  $("bClear").onclick = function () { st.ans[cur] = null; save(); renderQ(); renderPalette(); };
+  $("bSubmit").onclick = function () {
+    var a = st.ans.filter(function (x) { return x !== null; }).length, m = st.mk.filter(Boolean).length;
+    $("modalBox").innerHTML = "<h3 style='margin-bottom:10px'>" + t("submitQ") + "</h3>" +
+      "<div class='row'><span>" + t("ans") + "</span><b>" + a + "</b></div><div class='row'><span>" + t("unans") + "</span><b>" + (D.questions.length - a) + "</b></div><div class='row'><span>" + t("marked") + "</span><b>" + m + "</b></div>" +
+      "<div style='display:flex;gap:8px;margin-top:16px;justify-content:flex-end'><button class='b' id='mNo' type='button'>" + t("cancel") + "</button><button class='b red' id='mYes' type='button'>" + t("yes") + "</button></div>";
+    $("modal").classList.remove("hidden");
+    $("mNo").onclick = function () { $("modal").classList.add("hidden"); };
+    $("mYes").onclick = function () { $("modal").classList.add("hidden"); finish(false); };
+  };
+
+  function grade() {
+    var r = { c: 0, w: 0, s: 0, score: 0, sec: D.sections.map(function () { return { c: 0, w: 0, s: 0, score: 0 }; }) };
+    D.questions.forEach(function (q, i) {
+      var a = st.ans[i], x = r.sec[q.s];
+      if (a === null) { r.s++; x.s++; }
+      else if (a === q.a) { r.c++; x.c++; r.score += D.marking.correct; x.score += D.marking.correct; }
+      else { r.w++; x.w++; r.score += D.marking.wrong; x.score += D.marking.wrong; }
+    });
+    return r;
+  }
+  function finish(auto) {
+    clearInterval(tick);
+    st.done = true; st.end = Math.min(Date.now(), st.start + D.duration * 60000); save();
+    var r = grade();
+    try {
+      var hist = JSON.parse(localStorage.getItem(RKEY) || "[]");
+      hist.unshift({ at: Date.now(), score: r.score, c: r.c, w: r.w, s: r.s });
+      localStorage.setItem(RKEY, JSON.stringify(hist.slice(0, 20)));
+    } catch (e) {}
+    try { if (window.gtag) gtag("event", "test_submit", { test_id: D.id, score: r.score }); } catch (e) {}
+    show("result");
+    renderResult(auto);
+  }
+  function renderResult(auto) {
+    var r = grade(), n = D.questions.length, max = n * D.marking.correct, att = r.c + r.w;
+    var mins = Math.round(((st.end || Date.now()) - st.start) / 60000);
+    var secRows = D.sections.map(function (s, i) { var x = r.sec[i]; return "<tr><td>" + esc(L(s)) + '</td><td class="num">' + x.c + '</td><td class="num">' + x.w + '</td><td class="num">' + x.s + '</td><td class="num"><b>' + x.score + "</b> / " + s.count * D.marking.correct + "</td></tr>"; }).join("");
+    var sols = D.questions.map(function (q, i) {
+      var a = st.ans[i], st8 = a === null ? "s" : a === q.a ? "c" : "w";
+      if (resFilter === "w" && st8 !== "w") return "";
+      if (resFilter === "s" && st8 !== "s") return "";
+      var opts = (q.o[lang] || q.o.hi).map(function (o, k) {
+        var c = k === q.a ? " right" : (k === a ? " wrong" : "");
+        return '<div class="opt' + c + '" style="cursor:default"><span class="k">' + "ABCD"[k] + "</span><span>" + esc(o) + "</span></div>";
+      }).join("");
+      var tag = st8 === "c" ? '<span class="tagx t-c">' + t("correct") + " +" + D.marking.correct + "</span>" : st8 === "w" ? '<span class="tagx t-w">' + t("wrong") + " " + D.marking.wrong + "</span>" : '<span class="tagx t-s">' + t("skipped") + "</span>";
+      return '<div class="sol"><div class="qhead"><span class="qno">' + t("q") + " " + (i + 1) + '</span><span class="secname">' + esc(L(D.sections[q.s])) + "</span>" + tag + '</div><div class="qtext">' + esc(L(q.q)) + '</div><div class="opts">' + opts + '</div><div class="exp"><b>' + t("sol") + ":</b> " + esc(L(q.e)) + "</div></div>";
+    }).join("");
+    $("resultBox").innerHTML = (auto ? '<p class="note" style="margin-bottom:12px">' + t("timeUp") + "</p>" : "") +
+      '<div class="card"><div class="muted">' + esc(L(D.title)) + "</div><div style='margin-top:6px'>" + t("score") + '</div><div class="big">' + r.score + ' <span style="font-size:1.1rem;color:var(--text-muted)">/ ' + max + "</span></div>" +
+      '<div class="res-kpi"><div><b>' + r.c + "</b><span>" + t("correct") + "</span></div><div><b>" + r.w + "</b><span>" + t("wrong") + "</span></div><div><b>" + r.s + "</b><span>" + t("skipped") + "</span></div><div><b>" + (att ? Math.round(r.c / att * 100) : 0) + "%</b><span>" + t("acc") + " · " + mins + " min</span></div></div>" +
+      '<div class="tbl-wrap"><table class="tbl"><thead><tr><th>' + t("section") + '</th><th class="num">' + t("correct") + '</th><th class="num">' + t("wrong") + '</th><th class="num">' + t("skipped") + '</th><th class="num">' + t("marks") + "</th></tr></thead><tbody>" + secRows + "</tbody></table></div>" +
+      '<div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:16px"><button class="b" id="again" type="button">↻ ' + t("retake") + '</button><a class="b" href="/super-tet" style="text-decoration:none">' + t("back") + "</a></div></div>" +
+      '<div class="cta-band" style="margin:18px 0"><div><h3 style="font-size:1.2rem">' + t("join") + '</h3></div><a class="btn" href="/super-tet-gramin-vacancy#join">' + t("joinBtn") + "</a></div>" +
+      '<div class="filt"><button class="b' + (resFilter === "all" ? " pri" : "") + '" data-f="all" type="button">' + t("all") + '</button><button class="b' + (resFilter === "w" ? " pri" : "") + '" data-f="w" type="button">' + t("onlyW") + " (" + r.w + ')</button><button class="b' + (resFilter === "s" ? " pri" : "") + '" data-f="s" type="button">' + t("onlyS") + " (" + r.s + ")</button></div>" + sols;
+    $("again").onclick = function () { try { localStorage.removeItem(KEY); } catch (e) {} show("start"); renderStart(); };
+    $("resultBox").querySelectorAll("[data-f]").forEach(function (b) { b.onclick = function () { resFilter = b.dataset.f; renderResult(false); }; });
+  }
+
+  window.addEventListener("beforeunload", function (e) { if (view === "exam") { e.preventDefault(); e.returnValue = ""; } });
+
+  if (!/^[a-z0-9-]{3,60}$/.test(id)) { $("startBox").innerHTML = "<p>" + t("notFound") + ' <a href="/super-tet">' + t("back") + "</a></p>"; return; }
+  fetch("/data/super-tet/" + id + ".json", { cache: "no-cache" }).then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); }).then(function (d) {
+    D = d;
+    document.title = L(D.title) + " | TrickySSC Exams";
+    setLang(lang);
+    var saved = load();
+    if (saved && saved.done) { st = saved; show("result"); renderResult(false); }
+    else renderStart();
+  }).catch(function () { $("startBox").innerHTML = "<p>" + t("notFound") + ' <a href="/super-tet">' + t("back") + "</a></p>"; });
+})();
+</script>
+<script type="module" src="/assets/track.js"></script>
+</body>
+</html>
