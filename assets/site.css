@@ -265,3 +265,4 @@ a.subj-row:hover{border-color:var(--saffron);box-shadow:0 6px 18px rgba(255,107,
 .mini-nav{display:flex;flex-wrap:wrap;gap:8px}
 .mini-nav a{font-size:.86rem;font-weight:600;text-decoration:none;color:var(--text-dim);background:#fff;border:1px solid var(--border);border-radius:999px;padding:.35rem .8rem}
 .mini-nav a:hover,.mini-nav a.on{border-color:var(--saffron);color:var(--saffron-dark)}
+.dd-btn{white-space:nowrap}

@@ -14,7 +14,7 @@ service cloud.firestore {
         && request.resource.data.name.size() >= 2 && request.resource.data.name.size() < 80
         && request.resource.data.phone is string
         && request.resource.data.phone.matches('^[6-9][0-9]{9}$')
-        && request.resource.data.exam in ['drdo-sao','alc','esic-dd','epfo']
+        && request.resource.data.exam in ['super-tet','drdo-sao','alc','esic-dd','epfo']
         && entryId == request.resource.data.exam + '_' + request.resource.data.phone
         && (!('email' in request.resource.data) || (request.resource.data.email is string && request.resource.data.email.size() < 120))
         && (!('inService' in request.resource.data) || request.resource.data.inService in ['yes','no',''])
